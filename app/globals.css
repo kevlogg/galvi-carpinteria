@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 20% 98%;
+    --foreground: 24 10% 10%;
+    --border: 28 20% 88%;
+    --accent: 28 45% 35%;
+    --accent-foreground: 40 20% 98%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 24 10% 8%;
+    --foreground: 40 20% 96%;
+    --border: 28 15% 18%;
+    --accent: 28 45% 45%;
+    --accent-foreground: 40 20% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Estética cálida y premium - carpintería */
+body {
+  font-feature-settings: "rlig" 1, "calt" 1;
+}

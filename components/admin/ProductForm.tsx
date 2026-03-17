@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { getProxiedImageUrl } from "@/lib/image-url";
 
 interface CategoryOption {
   id: string;
@@ -42,6 +43,7 @@ export function ProductForm({ product, categories = [], className }: ProductForm
       featured: (form.querySelector('[name="featured"]') as HTMLInputElement).checked,
       active: (form.querySelector('[name="active"]') as HTMLInputElement).checked,
       image_urls: imageUrls,
+      dimensions_text: (form.querySelector('[name="dimensions_text"]') as HTMLInputElement)?.value?.trim() || null,
     };
     const url = isEdit ? `/api/admin/products/${product.id}` : "/api/admin/products";
     const res = await fetch(url, {
@@ -113,14 +115,23 @@ export function ProductForm({ product, categories = [], className }: ProductForm
             {imageUrls.map((url, index) => (
               <div
                 key={`${url}-${index}`}
-                className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg border-2 border-wood-200 bg-wood-50 shadow-sm"
+                className="relative h-28 w-28 shrink-0 overflow-hidden rounded-lg border-2 border-wood-200 bg-wood-100 shadow-md"
               >
                 <img
-                  src={url}
+                  src={getProxiedImageUrl(url)}
                   alt={`Preview ${index + 1}`}
                   className="h-full w-full object-cover"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const el = e.target as HTMLImageElement;
+                    el.style.display = "none";
+                    const fallback = el.nextElementSibling as HTMLElement;
+                    if (fallback) { fallback.classList.remove("hidden"); fallback.classList.add("flex"); }
+                  }}
                 />
+                <div className="absolute inset-0 hidden flex-col items-center justify-center bg-wood-200 text-center text-xs text-wood-600" aria-hidden>
+                  Sin vista previa
+                </div>
                 <button
                   type="button"
                   onClick={() => setImageUrls((prev) => prev.filter((_, i) => i !== index))}
@@ -156,6 +167,19 @@ export function ProductForm({ product, categories = [], className }: ProductForm
           step="0.01"
           defaultValue={product?.price as number}
           required
+          className="w-full rounded-md border border-wood-200 px-3 py-2"
+        />
+      </div>
+      <div>
+        <label className="mb-1 block text-sm font-medium text-wood-700">Medidas (opcional)</label>
+        <input
+          name="dimensions_text"
+          placeholder="Ej: 120 x 45 x 60 cm"
+          defaultValue={
+            product?.dimensions
+              ? `${(product.dimensions as { width?: number }).width ?? ""} x ${(product.dimensions as { height?: number }).height ?? ""} x ${(product.dimensions as { depth?: number }).depth ?? ""} ${(product.dimensions as { unit?: string }).unit ?? "cm"}`.replace(/\s+x\s+x\s+/g, " x ").trim()
+              : ""
+          }
           className="w-full rounded-md border border-wood-200 px-3 py-2"
         />
       </div>

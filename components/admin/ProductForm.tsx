@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { getProxiedImageUrl } from "@/lib/image-url";
@@ -117,15 +118,18 @@ export function ProductForm({ product, categories = [], className }: ProductForm
                 key={`${url}-${index}`}
                 className="relative h-28 w-28 shrink-0 overflow-hidden rounded-lg border-2 border-wood-200 bg-wood-100 shadow-md"
               >
-                <img
-                  src={getProxiedImageUrl(url)}
+                <Image
+                  src={getProxiedImageUrl(url) ?? ""}
                   alt={`Preview ${index + 1}`}
-                  className="h-full w-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="112px"
+                  unoptimized
                   referrerPolicy="no-referrer"
                   onError={(e) => {
-                    const el = e.target as HTMLImageElement;
-                    el.style.display = "none";
-                    const fallback = el.nextElementSibling as HTMLElement;
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = "none";
+                    const fallback = target.nextElementSibling as HTMLElement;
                     if (fallback) { fallback.classList.remove("hidden"); fallback.classList.add("flex"); }
                   }}
                 />

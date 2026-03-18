@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ShoppingCart } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
@@ -118,12 +119,15 @@ export function Navbar() {
                     <ul className="space-y-3">
                       {items.map((item) => (
                         <li key={item.product.id} className="flex gap-3 text-sm">
-                          <div className="h-12 w-12 shrink-0 overflow-hidden rounded bg-wood-800">
+                          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded bg-wood-800">
                             {item.product.images?.[0]?.url ? (
-                              <img
+                              <Image
                                 src={item.product.images[0].url}
                                 alt=""
-                                className="h-full w-full object-cover"
+                                fill
+                                className="object-cover"
+                                sizes="48px"
+                                unoptimized
                               />
                             ) : (
                               <div className="h-full w-full bg-wood-700" />

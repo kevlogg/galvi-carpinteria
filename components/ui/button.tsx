@@ -4,17 +4,17 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils/cn";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-wood-700 text-white hover:bg-wood-800 focus-visible:ring-wood-600",
+          "bg-cream text-background hover:bg-cream/90 focus-visible:ring-cream/50",
         destructive: "bg-red-600 text-white hover:bg-red-700 focus-visible:ring-red-500",
         outline:
-          "border border-wood-200 bg-transparent hover:bg-wood-50 focus-visible:ring-wood-500",
-        secondary: "bg-wood-100 text-wood-900 hover:bg-wood-200 focus-visible:ring-wood-500",
-        link: "text-wood-700 underline-offset-4 hover:underline focus-visible:ring-wood-500",
+          "border border-border bg-transparent text-foreground hover:bg-wood-900/50 hover:border-cream/30 focus-visible:ring-cream/30",
+        secondary: "bg-wood-800 text-foreground hover:bg-wood-700 focus-visible:ring-wood-600",
+        link: "text-cream underline-offset-4 hover:underline focus-visible:ring-cream/30",
         whatsapp: "bg-[#25D366] text-white hover:bg-[#20BD5A] focus-visible:ring-[#25D366]",
       },
       size: {

@@ -14,7 +14,7 @@ export function CategoryCard({ name, slug, imageUrl, className }: CategoryCardPr
     <Link
       href={`/tienda?categoria=${slug}`}
       className={cn(
-        "group relative block overflow-hidden rounded-lg border border-wood-200 bg-wood-50 aspect-[4/3]",
+        "group relative block overflow-hidden rounded-lg border border-border bg-wood-900 aspect-[4/3]",
         className
       )}
     >
@@ -28,9 +28,9 @@ export function CategoryCard({ name, slug, imageUrl, className }: CategoryCardPr
           unoptimized
         />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-wood-200 to-wood-300" />
+        <div className="absolute inset-0 bg-gradient-to-br from-wood-800 to-wood-900" />
       )}
-      <div className="absolute inset-0 bg-wood-900/40 transition group-hover:bg-wood-900/50" />
+      <div className="absolute inset-0 bg-black/50 transition group-hover:bg-black/60" />
       <div className="absolute inset-0 flex items-end p-4">
         <span className="font-medium text-white drop-shadow">{name}</span>
       </div>

@@ -2,7 +2,8 @@
 
 import { getProxiedImageUrl } from "@/lib/image-url";
 
-interface ProxiedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface ProxiedImageProps
+  extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, "src"> {
   src: string | null | undefined;
 }
 

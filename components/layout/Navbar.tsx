@@ -6,6 +6,7 @@ import { Menu, X, ShoppingCart } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/lib/store/cart-store";
+import { Logo } from "@/components/layout/Logo";
 
 const navLinks = [
   { href: "/", label: "Inicio" },
@@ -60,21 +61,16 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-wood-200/60 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link
-          href="/"
-          className="font-serif text-xl font-medium text-wood-900 tracking-tight"
-        >
-          Locos por la Pinotea
-        </Link>
+        <Logo showText={true} />
 
         <nav className="hidden md:flex md:items-center md:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-wood-700 hover:text-wood-900 transition-colors"
+              className="text-sm font-medium text-foreground/90 hover:text-cream transition-colors"
             >
               {link.label}
             </Link>
@@ -96,7 +92,7 @@ export function Navbar() {
                 <ShoppingCart className="h-5 w-5" />
                 {totalItems > 0 && (
                   <span
-                    className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-wood-700 px-1 text-[10px] font-semibold text-white"
+                    className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-cream px-1 text-[10px] font-semibold text-background"
                     aria-hidden
                   >
                     {totalItems > 99 ? "99+" : totalItems}
@@ -106,23 +102,23 @@ export function Navbar() {
             </Button>
             {cartPreviewOpen && (
               <div
-                className="absolute right-0 top-full z-50 mt-2 w-80 rounded-lg border border-wood-200 bg-white py-3 shadow-lg"
+                className="absolute right-0 top-full z-50 mt-2 w-80 rounded-lg border border-border bg-background py-3 shadow-lg"
                 role="dialog"
                 aria-label="Vista previa del carrito"
               >
-                <div className="border-b border-wood-100 px-4 pb-3">
-                  <h3 className="font-medium text-wood-900">Carrito</h3>
+                <div className="border-b border-border px-4 pb-3">
+                  <h3 className="font-medium text-foreground">Carrito</h3>
                 </div>
                 <div className="max-h-64 overflow-y-auto px-4 py-2">
                   {items.length === 0 ? (
-                    <p className="py-4 text-center text-sm text-wood-500">
+                    <p className="py-4 text-center text-sm text-muted">
                       Tu carrito está vacío
                     </p>
                   ) : (
                     <ul className="space-y-3">
                       {items.map((item) => (
                         <li key={item.product.id} className="flex gap-3 text-sm">
-                          <div className="h-12 w-12 shrink-0 overflow-hidden rounded bg-wood-100">
+                          <div className="h-12 w-12 shrink-0 overflow-hidden rounded bg-wood-800">
                             {item.product.images?.[0]?.url ? (
                               <img
                                 src={item.product.images[0].url}
@@ -130,14 +126,14 @@ export function Navbar() {
                                 className="h-full w-full object-cover"
                               />
                             ) : (
-                              <div className="h-full w-full bg-wood-200" />
+                              <div className="h-full w-full bg-wood-700" />
                             )}
                           </div>
                           <div className="min-w-0 flex-1">
-                            <p className="truncate font-medium text-wood-900">
+                            <p className="truncate font-medium text-foreground">
                               {item.product.title}
                             </p>
-                            <p className="text-wood-600">
+                            <p className="text-muted">
                               {item.quantity} × {formatPrice(item.product.price)}
                             </p>
                           </div>
@@ -148,8 +144,8 @@ export function Navbar() {
                 </div>
                 {items.length > 0 && (
                   <>
-                    <div className="border-t border-wood-100 px-4 py-2">
-                      <p className="flex justify-between text-sm font-medium text-wood-900">
+                    <div className="border-t border-border px-4 py-2">
+                      <p className="flex justify-between text-sm font-medium text-foreground">
                         <span>Subtotal</span>
                         <span>{formatPrice(subtotal)}</span>
                       </p>
@@ -175,7 +171,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="md:hidden p-2 text-wood-700"
+          className="md:hidden p-2 text-foreground"
           onClick={() => setOpen((o) => !o)}
           aria-label="Menú"
         >
@@ -184,13 +180,13 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-wood-200/60 bg-white md:hidden">
+        <div className="border-t border-border bg-background md:hidden">
           <nav className="container mx-auto flex flex-col gap-1 px-4 py-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="py-2 text-sm font-medium text-wood-700 hover:text-wood-900"
+                className="py-2 text-sm font-medium text-foreground hover:text-cream"
                 onClick={() => setOpen(false)}
               >
                 {link.label}
@@ -207,7 +203,7 @@ export function Navbar() {
                   <span className="relative inline-flex">
                     <ShoppingCart className="h-5 w-5" />
                     {totalItems > 0 && (
-                      <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-wood-700 px-1 text-[10px] font-semibold text-white">
+                      <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-cream px-1 text-[10px] font-semibold text-background">
                         {totalItems > 99 ? "99+" : totalItems}
                       </span>
                     )}

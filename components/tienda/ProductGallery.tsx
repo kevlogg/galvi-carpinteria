@@ -12,11 +12,11 @@ interface ProductGalleryProps {
 
 export function ProductGallery({ images, title, className }: ProductGalleryProps) {
   const [selected, setSelected] = useState(0);
-  const list = images.length > 0 ? images : [{ url: "https://placehold.co/600x450/f5f2ed/5b4332?text=Producto" }];
+  const list = images.length > 0 ? images : [{ url: "https://placehold.co/600x450/2d2620/d2c9b1?text=Producto" }];
 
   return (
     <div className={cn("space-y-3", className)}>
-      <div className="relative aspect-square overflow-hidden rounded-lg bg-wood-100">
+      <div className="relative aspect-square overflow-hidden rounded-lg bg-wood-950">
         <Image
           src={list[selected].url}
           alt={`${title} - imagen ${selected + 1}`}
@@ -37,8 +37,8 @@ export function ProductGallery({ images, title, className }: ProductGalleryProps
               className={cn(
                 "relative h-16 w-16 shrink-0 overflow-hidden rounded-md border-2 transition",
                 selected === i
-                  ? "border-wood-600"
-                  : "border-transparent hover:border-wood-300"
+                  ? "border-cream"
+                  : "border-transparent hover:border-wood-600"
               )}
             >
               <Image

@@ -73,9 +73,9 @@ export function CustomRequestForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-lg border border-green-200 bg-green-50 p-6">
-        <h3 className="font-medium text-green-900">Solicitud enviada</h3>
-        <p className="mt-2 text-green-800">
+      <div className="rounded-lg border border-green-800/50 bg-green-900/20 p-6">
+        <h3 className="font-medium text-green-300">Solicitud enviada</h3>
+        <p className="mt-2 text-green-400/90">
           Recibimos tu pedido. Te vamos a contactar a la brevedad por WhatsApp o email.
         </p>
         <Button asChild variant="whatsapp" size="lg" className="mt-6">
@@ -91,23 +91,23 @@ export function CustomRequestForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-wood-700">
+          <label className="mb-1 block text-sm font-medium text-foreground">
             Nombre y apellido *
           </label>
           <input
             {...register("full_name")}
-            className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+            className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
           />
           {errors.full_name && (
             <p className="mt-1 text-sm text-red-600">{errors.full_name.message}</p>
           )}
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-wood-700">Teléfono *</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Teléfono *</label>
           <input
             {...register("phone")}
             type="tel"
-            className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+            className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
           />
           {errors.phone && (
             <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
@@ -116,23 +116,23 @@ export function CustomRequestForm() {
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-wood-700">Email *</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Email *</label>
           <input
             {...register("email")}
             type="email"
-            className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+            className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
           />
           {errors.email && (
             <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
           )}
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-wood-700">
+          <label className="mb-1 block text-sm font-medium text-foreground">
             Ciudad / localidad *
           </label>
           <input
             {...register("city")}
-            className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+            className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
           />
           {errors.city && (
             <p className="mt-1 text-sm text-red-600">{errors.city.message}</p>
@@ -140,114 +140,114 @@ export function CustomRequestForm() {
         </div>
       </div>
       <div>
-        <label className="mb-1 block text-sm font-medium text-wood-700">
+        <label className="mb-1 block text-sm font-medium text-foreground">
           Tipo de mueble *
         </label>
         <input
           {...register("furniture_type")}
           placeholder="Ej: Placard, cocina, barra, escritorio"
-          className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+          className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
         />
         {errors.furniture_type && (
           <p className="mt-1 text-sm text-red-600">{errors.furniture_type.message}</p>
         )}
       </div>
       <div>
-        <label className="mb-1 block text-sm font-medium text-wood-700">Ambiente</label>
+        <label className="mb-1 block text-sm font-medium text-foreground">Ambiente</label>
         <input
           {...register("environment")}
           placeholder="Ej: Dormitorio, living, oficina"
-          className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+          className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
         />
       </div>
       <div className="grid gap-4 sm:grid-cols-3">
         <div>
-          <label className="mb-1 block text-sm font-medium text-wood-700">Ancho (cm)</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Ancho (cm)</label>
           <input
             {...register("width")}
-            className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+            className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-wood-700">Alto (cm)</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Alto (cm)</label>
           <input
             {...register("height")}
-            className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+            className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-wood-700">
+          <label className="mb-1 block text-sm font-medium text-foreground">
             Profundidad (cm)
           </label>
           <input
             {...register("depth")}
-            className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+            className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
           />
         </div>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-wood-700">
+          <label className="mb-1 block text-sm font-medium text-foreground">
             Material deseado
           </label>
           <input
             {...register("material")}
             placeholder="Ej: Melamina, MDF, madera"
-            className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+            className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-wood-700">
+          <label className="mb-1 block text-sm font-medium text-foreground">
             Color o terminación
           </label>
           <input
             {...register("finish")}
             placeholder="Ej: Blanco mate, natural"
-            className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+            className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
           />
         </div>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1 block text-sm font-medium text-wood-700">
+          <label className="mb-1 block text-sm font-medium text-foreground">
             Presupuesto estimado
           </label>
           <input
             {...register("estimated_budget")}
             placeholder="Ej: Hasta $500.000"
-            className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+            className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-wood-700">
+          <label className="mb-1 block text-sm font-medium text-foreground">
             Fecha aproximada deseada
           </label>
           <input
             {...register("desired_date")}
             placeholder="Ej: En 2 meses"
-            className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+            className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
           />
         </div>
       </div>
       <div>
-        <label className="mb-1 block text-sm font-medium text-wood-700">
+        <label className="mb-1 block text-sm font-medium text-foreground">
           Descripción detallada *
         </label>
         <textarea
           {...register("description")}
           rows={4}
           placeholder="Contanos qué necesitás, cómo es el espacio, preferencias..."
-          className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+          className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
         />
         {errors.description && (
           <p className="mt-1 text-sm text-red-600">{errors.description.message}</p>
         )}
       </div>
       <div>
-        <label className="mb-1 block text-sm font-medium text-wood-700">
+        <label className="mb-1 block text-sm font-medium text-foreground">
           Imágenes de referencia (opcional)
         </label>
-        <p className="mb-2 text-sm text-wood-500">
+        <p className="mb-2 text-sm text-muted">
           Subí fotos de referencia. Tras enviar el formulario podrás adjuntar más por
           WhatsApp si hace falta.
         </p>
@@ -255,7 +255,7 @@ export function CustomRequestForm() {
           type="file"
           accept="image/*"
           multiple
-          className="w-full text-sm text-wood-600 file:mr-4 file:rounded file:border-0 file:bg-wood-100 file:px-4 file:py-2 file:text-wood-800"
+          className="w-full text-sm text-muted file:mr-4 file:rounded file:border-0 file:bg-wood-800 file:px-4 file:py-2 file:text-foreground"
           onChange={async (e) => {
             const files = e.target.files;
             if (!files?.length) return;
@@ -283,7 +283,7 @@ export function CustomRequestForm() {
           {...register("wants_visit")}
           className="h-4 w-4 rounded border-wood-300"
         />
-        <label htmlFor="wants_visit" className="text-sm text-wood-700">
+        <label htmlFor="wants_visit" className="text-sm text-foreground">
           Necesito visita / medición a domicilio
         </label>
       </div>

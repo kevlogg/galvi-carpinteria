@@ -59,43 +59,43 @@ export function CheckoutForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
-        <label className="mb-1 block text-sm font-medium text-wood-700">
+        <label className="mb-1 block text-sm font-medium text-foreground">
           Nombre y apellido *
         </label>
         <input
           {...register("customer_name")}
-          className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+          className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
         />
         {errors.customer_name && (
-          <p className="mt-1 text-sm text-red-600">{errors.customer_name.message}</p>
+          <p className="mt-1 text-sm text-red-400">{errors.customer_name.message}</p>
         )}
       </div>
       <div>
-        <label className="mb-1 block text-sm font-medium text-wood-700">Email *</label>
+        <label className="mb-1 block text-sm font-medium text-foreground">Email *</label>
         <input
           {...register("customer_email")}
           type="email"
-          className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+          className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
         />
         {errors.customer_email && (
-          <p className="mt-1 text-sm text-red-600">{errors.customer_email.message}</p>
+          <p className="mt-1 text-sm text-red-400">{errors.customer_email.message}</p>
         )}
       </div>
       <div>
-        <label className="mb-1 block text-sm font-medium text-wood-700">
+        <label className="mb-1 block text-sm font-medium text-foreground">
           Teléfono (WhatsApp) *
         </label>
         <input
           {...register("customer_phone")}
           type="tel"
-          className="w-full rounded-md border border-wood-200 px-3 py-2 text-wood-800"
+          className="w-full rounded-md border border-border bg-wood-900/50 px-3 py-2 text-foreground"
         />
         {errors.customer_phone && (
-          <p className="mt-1 text-sm text-red-600">{errors.customer_phone.message}</p>
+          <p className="mt-1 text-sm text-red-400">{errors.customer_phone.message}</p>
         )}
       </div>
       {status === "error" && (
-        <p className="text-sm text-red-600">
+        <p className="text-sm text-red-400">
           No se pudo iniciar el pago. Revisá los datos o intentá de nuevo.
         </p>
       )}

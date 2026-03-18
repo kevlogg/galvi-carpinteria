@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { AddToCartButton } from "@/components/tienda/AddToCartButton";
 import type { Product } from "@/lib/types/database";
 import { cn } from "@/lib/utils/cn";
+import { PLACEHOLDER_PRODUCT_IMAGE } from "@/lib/constants";
 
 interface ProductCardProps {
   product: Product;
@@ -23,17 +24,17 @@ export function ProductCard({ product, className }: ProductCardProps) {
   const imageUrl =
     product.images && product.images.length > 0
       ? product.images[0].url
-      : "https://placehold.co/600x450/f5f2ed/5b4332?text=Producto";
+      : PLACEHOLDER_PRODUCT_IMAGE;
   const productLink = `/tienda/${product.slug}`;
 
   return (
     <article
       className={cn(
-        "flex flex-col rounded-lg border border-wood-200 bg-white overflow-hidden transition hover:shadow-md",
+        "flex flex-col overflow-hidden rounded-lg border border-border bg-wood-900/50 transition hover:shadow-lg hover:border-cream/20",
         className
       )}
     >
-      <Link href={productLink} className="relative block aspect-[4/3] bg-wood-100">
+      <Link href={productLink} className="relative block aspect-[4/3] bg-wood-950">
         <Image
           src={imageUrl}
           alt={product.title}
@@ -43,23 +44,23 @@ export function ProductCard({ product, className }: ProductCardProps) {
           unoptimized={imageUrl.startsWith("http") ? false : undefined}
         />
         {product.stock_type === "on_request" && (
-          <span className="absolute top-2 left-2 rounded bg-wood-800/90 px-2 py-0.5 text-xs text-white">
+          <span className="absolute left-2 top-2 rounded bg-black/80 px-2 py-0.5 text-xs text-cream">
             A pedido
           </span>
         )}
         {product.stock_type === "in_stock" && (
-          <span className="absolute top-2 left-2 rounded bg-green-700/90 px-2 py-0.5 text-xs text-white">
+          <span className="absolute left-2 top-2 rounded bg-green-700/90 px-2 py-0.5 text-xs text-white">
             En stock
           </span>
         )}
       </Link>
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="font-medium text-wood-900 line-clamp-2">
-          <Link href={productLink} className="hover:underline">
+        <h3 className="font-medium text-foreground line-clamp-2">
+          <Link href={productLink} className="hover:text-cream transition-colors">
             {product.title}
           </Link>
         </h3>
-        <p className="mt-1 text-lg font-medium text-wood-800">
+        <p className="mt-1 text-lg font-medium text-cream">
           {formatPrice(product.price)}
         </p>
         <div className="mt-4 flex flex-1 flex-col gap-2">

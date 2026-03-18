@@ -124,7 +124,10 @@ export async function getProjectsFromFirestore(filters?: {
   featuredOnly?: boolean;
 }): Promise<Project[]> {
   const db = getAdminFirestore();
-  let q = db.collection("projects");
+  // Firebase Admin tipa `collection()` como `CollectionReference`, pero al encadenar
+  // `.where()` el resultado es un `Query`. Para evitar error TS en builds,
+  // usamos `any` aquí (el runtime funciona igual).
+  let q: any = db.collection("projects");
   if (filters?.featuredOnly) {
     q = q.where("featured", "==", true);
   }

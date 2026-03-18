@@ -53,7 +53,7 @@ export default async function TiendaPage({ searchParams }: PageProps) {
           ))}
         </div>
         {products.length === 0 && (
-          <p className="mt-10 text-center text-wood-600">
+          <p className="mt-10 text-center text-muted">
             No hay productos en esta categoría. Prueba otro filtro o consultanos por WhatsApp.
           </p>
         )}

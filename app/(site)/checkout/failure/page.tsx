@@ -9,10 +9,10 @@ export const metadata = {
 export default function CheckoutFailurePage() {
   return (
     <div className="container mx-auto px-4 py-16 text-center">
-      <h1 className="font-serif text-3xl font-medium text-wood-900">
+      <h1 className="font-serif text-3xl font-medium text-foreground">
         El pago no pudo completarse
       </h1>
-      <p className="mt-4 text-wood-700">
+      <p className="mt-4 text-muted">
         No te preocupes, tu carrito sigue disponible. Podés intentar de nuevo o
         escribirnos por WhatsApp para coordinar otra forma de pago.
       </p>

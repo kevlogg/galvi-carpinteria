@@ -4,7 +4,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export const metadata = {
   title: "Carrito",
-  description: "Tu carrito de compras - Locos por la Pinotea",
+  description: "Tu carrito de compras - Galvi Carpintería",
 };
 
 export default function CarritoPage() {

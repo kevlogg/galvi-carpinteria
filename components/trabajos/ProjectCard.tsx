@@ -2,27 +2,33 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/lib/types/database";
 import { cn } from "@/lib/utils/cn";
+import { getPlaceholderProjectImage, PLACEHOLDER_PROJECT_IMAGE } from "@/lib/constants";
 
 interface ProjectCardProps {
   project: Project;
   className?: string;
 }
 
+function getProjectImage(project: Project): string {
+  const url = project.images?.[0]?.url;
+  // Si la imagen viene como placeholder (placehold.co) o como placeholder genérico,
+  // reemplazamos por una imagen acorde al título.
+  if (url && !url.includes("placehold.co") && url !== PLACEHOLDER_PROJECT_IMAGE) return url;
+  return getPlaceholderProjectImage(project.title || "Trabajo");
+}
+
 export function ProjectCard({ project, className }: ProjectCardProps) {
-  const imageUrl =
-    project.images && project.images.length > 0
-      ? project.images[0].url
-      : `https://placehold.co/600x450/e4d9ca/5b4332?text=${encodeURIComponent(project.title || "Trabajo")}`;
+  const imageUrl = getProjectImage(project);
 
   return (
     <Link
       href={`/trabajos/${project.slug}`}
       className={cn(
-        "group block overflow-hidden rounded-lg border border-wood-200 bg-white transition hover:shadow-lg",
+        "group block overflow-hidden rounded-lg border border-border bg-wood-900/50 transition hover:shadow-lg hover:border-cream/20",
         className
       )}
     >
-      <div className="relative aspect-[4/3] bg-wood-100">
+      <div className="relative aspect-[4/3] bg-wood-950">
         <Image
           src={imageUrl}
           alt={project.title}
@@ -33,15 +39,15 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
         />
       </div>
       <div className="p-4">
-        <h3 className="font-medium text-wood-900 group-hover:underline">
+        <h3 className="font-medium text-foreground group-hover:text-cream transition-colors">
           {project.title}
         </h3>
         {project.description && (
-          <p className="mt-1 line-clamp-2 text-sm text-wood-600">
+          <p className="mt-1 line-clamp-2 text-sm text-muted">
             {project.description}
           </p>
         )}
-        <p className="mt-2 text-sm font-medium text-wood-700">
+        <p className="mt-2 text-sm font-medium text-cream">
           Quiero algo similar →
         </p>
       </div>

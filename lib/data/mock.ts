@@ -1,5 +1,6 @@
 import type { Product } from "@/lib/types/database";
 import type { Project } from "@/lib/types/database";
+import { PLACEHOLDER_PRODUCT_IMAGE, PLACEHOLDER_PROJECT_IMAGE } from "@/lib/constants";
 
 export const MOCK_PRODUCTS: Product[] = [
   {
@@ -21,7 +22,7 @@ export const MOCK_PRODUCTS: Product[] = [
     seo_description: null,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
-    images: [{ id: "1", product_id: "1", url: "https://placehold.co/600x450/f5f2ed/5b4332?text=Producto", sort_order: 0 }],
+    images: [{ id: "1", product_id: "1", url: PLACEHOLDER_PRODUCT_IMAGE, sort_order: 0 }],
   },
   {
     id: "2",
@@ -42,7 +43,7 @@ export const MOCK_PRODUCTS: Product[] = [
     seo_description: null,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
-    images: [{ id: "2", product_id: "2", url: "https://placehold.co/600x450/f5f2ed/5b4332?text=Producto", sort_order: 0 }],
+    images: [{ id: "2", product_id: "2", url: PLACEHOLDER_PRODUCT_IMAGE, sort_order: 0 }],
   },
   {
     id: "3",
@@ -63,7 +64,7 @@ export const MOCK_PRODUCTS: Product[] = [
     seo_description: null,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
-    images: [{ id: "3", product_id: "3", url: "https://placehold.co/600x450/f5f2ed/5b4332?text=Producto", sort_order: 0 }],
+    images: [{ id: "3", product_id: "3", url: PLACEHOLDER_PRODUCT_IMAGE, sort_order: 0 }],
   },
 ];
 
@@ -76,7 +77,7 @@ export const MOCK_PROJECTS: Project[] = [
     description: "Cocina completa en melamina, isla con barra y alacenas altas. Mar del Plata.",
     featured: true,
     created_at: new Date().toISOString(),
-    images: [{ id: "1", project_id: "1", url: "https://placehold.co/600x450/e4d9ca/5b4332?text=Trabajo", sort_order: 0 }],
+    images: [{ id: "1", project_id: "1", url: PLACEHOLDER_PROJECT_IMAGE, sort_order: 0 }],
   },
   {
     id: "2",
@@ -86,7 +87,7 @@ export const MOCK_PROJECTS: Project[] = [
     description: "Placard de 3 cuerpos con puertas corredizas y módulo de cajoneras.",
     featured: true,
     created_at: new Date().toISOString(),
-    images: [{ id: "2", project_id: "2", url: "https://placehold.co/600x450/e4d9ca/5b4332?text=Trabajo", sort_order: 0 }],
+    images: [{ id: "2", project_id: "2", url: PLACEHOLDER_PROJECT_IMAGE, sort_order: 0 }],
   },
 ];
 

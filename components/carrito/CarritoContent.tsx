@@ -36,11 +36,11 @@ export function CarritoContent() {
         {items.map((item) => (
           <div
             key={item.product.id}
-            className="flex gap-4 rounded-lg border border-wood-200 bg-white p-4"
+            className="flex gap-4 rounded-lg border border-border bg-wood-900/50 p-4"
           >
-            <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-md bg-wood-100">
+            <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-md bg-wood-950">
               <Image
-                src={item.product.images?.[0]?.url ?? "https://placehold.co/96x96/f5f2ed/5b4332?text=+"}
+                src={item.product.images?.[0]?.url ?? "https://placehold.co/96x96/2d2620/d2c9b1?text=+"}
                 alt={item.product.title}
                 fill
                 className="object-cover"
@@ -50,53 +50,53 @@ export function CarritoContent() {
             <div className="flex-1 min-w-0">
               <Link
                 href={`/tienda/${item.product.slug}`}
-                className="font-medium text-wood-900 hover:underline"
+                className="font-medium text-foreground hover:text-cream"
               >
                 {item.product.title}
               </Link>
-              <p className="mt-1 text-wood-700">
+              <p className="mt-1 text-muted">
                 {formatPrice(item.product.price)} x {item.quantity}
               </p>
               <div className="mt-2 flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                  className="h-8 w-8 rounded border border-wood-200 text-wood-700 hover:bg-wood-50"
+                  className="h-8 w-8 rounded border border-border text-foreground hover:bg-wood-800"
                 >
                   −
                 </button>
-                <span className="w-8 text-center text-sm">{item.quantity}</span>
+                <span className="w-8 text-center text-sm text-foreground">{item.quantity}</span>
                 <button
                   type="button"
                   onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                  className="h-8 w-8 rounded border border-wood-200 text-wood-700 hover:bg-wood-50"
+                  className="h-8 w-8 rounded border border-border text-foreground hover:bg-wood-800"
                 >
                   +
                 </button>
                 <button
                   type="button"
                   onClick={() => removeItem(item.product.id)}
-                  className="ml-4 text-sm text-red-600 hover:underline"
+                  className="ml-4 text-sm text-red-400 hover:underline"
                 >
                   Quitar
                 </button>
               </div>
             </div>
-            <div className="text-right font-medium text-wood-800">
+            <div className="text-right font-medium text-cream">
               {formatPrice(item.product.price * item.quantity)}
             </div>
           </div>
         ))}
       </div>
       <div>
-        <div className="sticky top-24 rounded-lg border border-wood-200 bg-wood-50/50 p-6">
-          <h3 className="font-medium text-wood-900">Resumen</h3>
-          <p className="mt-4 flex justify-between text-wood-700">
+        <div className="sticky top-24 rounded-lg border border-border bg-wood-900/50 p-6">
+          <h3 className="font-medium text-foreground">Resumen</h3>
+          <p className="mt-4 flex justify-between text-foreground/90">
             <span>Subtotal</span>
             <span>{formatPrice(subtotal())}</span>
           </p>
           <div className="mt-6">
-            <p className="mb-3 text-sm font-medium text-wood-700">Datos para el pago</p>
+            <p className="mb-3 text-sm font-medium text-foreground">Datos para el pago</p>
             <CheckoutForm />
           </div>
           <Button

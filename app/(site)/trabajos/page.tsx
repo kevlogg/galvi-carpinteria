@@ -1,67 +1,48 @@
-import { Suspense } from "react";
-import { getProjects } from "@/lib/data/projects";
-import { ProjectCard } from "@/components/trabajos/ProjectCard";
+import Link from "next/link";
+import Image from "next/image";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { getCategoriesFromFirestore } from "@/lib/data/firestore";
+import { TRABAJOS_REALIZADOS_IMAGENES } from "@/lib/constants";
 
 export const metadata = {
   title: "Trabajos realizados",
-  description: "Galería de proyectos de carpintería y muebles a medida en Mar del Plata.",
+  description: "Galería de proyectos de carpintería y muebles a medida en Pilar y Buenos Aires.",
 };
 
-interface PageProps {
-  searchParams: Promise<{ categoria?: string }>;
-}
-
-export default async function TrabajosPage({ searchParams }: PageProps) {
-  const { categoria } = await searchParams;
-  const [projects, categoriesFromDb] = await Promise.all([
-    getProjects(categoria ?? undefined),
-    getCategoriesFromFirestore(),
-  ]);
-  const categories = categoriesFromDb.map((c) => ({ slug: c.slug, name: c.name }));
-
+export default function TrabajosPage() {
   return (
     <div className="container mx-auto px-4 py-10">
       <SectionHeader
         title="Trabajos realizados"
         subtitle="Proyectos reales de nuestro taller. Cocinas, placares, barras y más."
       />
-      <div className="mt-8 flex flex-wrap gap-2">
-        <a
-          href="/trabajos"
-          className={`rounded-full px-4 py-2 text-sm font-medium ${
-            !categoria
-              ? "bg-wood-700 text-white"
-              : "bg-wood-100 text-wood-800 hover:bg-wood-200"
-          }`}
-        >
-          Todos
-        </a>
-        {categories.map((c) => (
-          <a
-            key={c.slug}
-            href={`/trabajos?categoria=${c.slug}`}
-            className={`rounded-full px-4 py-2 text-sm font-medium ${
-              categoria === c.slug
-                ? "bg-wood-700 text-white"
-                : "bg-wood-100 text-wood-800 hover:bg-wood-200"
-            }`}
-          >
-            {c.name}
-          </a>
-        ))}
-      </div>
       <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {TRABAJOS_REALIZADOS_IMAGENES.map((trabajo, i) => (
+          <Link
+            key={i}
+            href="/a-medida"
+            className="group block overflow-hidden rounded-lg border border-border bg-wood-900/50 transition hover:shadow-lg hover:border-cream/20"
+          >
+            <div className="relative aspect-[4/3] bg-wood-950">
+              <Image
+                src={trabajo.src}
+                alt={trabajo.title}
+                fill
+                className="object-cover transition group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                unoptimized
+              />
+            </div>
+            <div className="p-4">
+              <h3 className="font-medium text-foreground transition-colors group-hover:text-cream">
+                {trabajo.title}
+              </h3>
+              <p className="mt-2 text-sm font-medium text-cream">
+                Quiero algo similar →
+              </p>
+            </div>
+          </Link>
         ))}
       </div>
-      {projects.length === 0 && (
-        <p className="mt-10 text-center text-wood-600">
-          No hay trabajos en esta categoría todavía.
-        </p>
-      )}
     </div>
   );
 }

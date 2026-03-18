@@ -3,17 +3,17 @@
  * Requiere FIREBASE_SERVICE_ACCOUNT_JSON (JSON string) o archivo en
  * GOOGLE_APPLICATION_CREDENTIALS.
  */
-import { getApps, getApp, initializeApp, cert, type FirebaseApp } from "firebase-admin/app";
+import { getApps, getApp, initializeApp, cert } from "firebase-admin/app";
 import { getFirestore, type Firestore } from "firebase-admin/firestore";
 import { getAuth, type Auth } from "firebase-admin/auth";
 import { getStorage, type Storage } from "firebase-admin/storage";
 
-let adminApp: FirebaseApp | null = null;
+let adminApp: any | null = null;
 
-function getAdminApp(): FirebaseApp {
+function getAdminApp(): any {
   if (adminApp) return adminApp;
   if (getApps().length > 0) {
-    adminApp = getApp() as FirebaseApp;
+    adminApp = getApp();
     return adminApp;
   }
   let json = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;

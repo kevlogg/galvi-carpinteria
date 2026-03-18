@@ -11,7 +11,7 @@ export function LoadingSkeleton({ className }: { className?: string }) {
 
 export function ProductCardSkeleton() {
   return (
-    <div className="rounded-lg border border-wood-200 overflow-hidden bg-white">
+    <div className="rounded-lg border border-border overflow-hidden bg-wood-900/50">
       <LoadingSkeleton className="aspect-[4/3] w-full" />
       <div className="p-4 space-y-2">
         <LoadingSkeleton className="h-5 w-3/4" />

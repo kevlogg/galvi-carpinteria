@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, DM_Serif_Display } from "next/font/google";
+import { DM_Sans, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -7,7 +7,7 @@ const dmSans = DM_Sans({
   variable: "--font-sans",
   display: "swap",
 });
-const dmSerif = DM_Serif_Display({
+const libreBaskerville = Libre_Baskerville({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-serif",
@@ -16,12 +16,22 @@ const dmSerif = DM_Serif_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "Locos por la Pinotea | Muebles a medida en Mar del Plata",
-    template: "%s | Locos por la Pinotea",
+    default: "Galvi Carpintería | Muebles a medida en Pilar y Buenos Aires",
+    template: "%s | Galvi Carpintería",
   },
   description:
-    "Taller de carpintería y fabricación de muebles a medida en Mar del Plata. Cocinas, placares, barras, escritorios y más. Presupuestos sin compromiso.",
-  keywords: ["muebles a medida", "carpintería", "Mar del Plata", "cocinas", "placares", "muebles"],
+    "Carpintería a medida en Pilar. Cocinas, placares, muebles en melamina MDF, enchapado y laqueado. Herrajes Häfele, Blum y Eurohard. Cotizaciones sin costo.",
+  keywords: [
+    "muebles a medida",
+    "carpintería",
+    "Pilar",
+    "Buenos Aires",
+    "cocinas",
+    "placares",
+    "melamina",
+    "Häfele",
+    "Blum",
+  ],
   openGraph: { locale: "es_AR" },
 };
 
@@ -29,8 +39,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${dmSans.variable} ${dmSerif.variable}`}>
-      <body className="min-h-screen flex flex-col font-sans antialiased">
+    <html lang="es" className={`${dmSans.variable} ${libreBaskerville.variable}`}>
+      <body className="min-h-screen flex flex-col font-sans antialiased bg-background text-foreground">
         {children}
       </body>
     </html>

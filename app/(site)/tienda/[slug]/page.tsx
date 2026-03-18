@@ -42,47 +42,47 @@ export default async function ProductPage({ params }: PageProps) {
 
   const images = product.images?.length
     ? product.images.map((i) => ({ url: i.url }))
-    : [{ url: "https://placehold.co/600x450/f5f2ed/5b4332?text=Producto" }];
+    : [{ url: "https://placehold.co/600x450/2d2620/d2c9b1?text=Producto" }];
 
   return (
     <div className="container mx-auto px-4 py-10">
       <div className="grid gap-10 lg:grid-cols-2">
         <ProductGallery images={images} title={product.title} />
         <div>
-          <p className="text-sm text-wood-500">
+          <p className="text-sm text-muted">
             {product.category?.name ?? "Producto"}
           </p>
-          <h1 className="mt-2 font-serif text-3xl font-medium text-wood-900 md:text-4xl">
+          <h1 className="mt-2 font-serif text-3xl font-medium text-foreground md:text-4xl">
             {product.title}
           </h1>
-          <p className="mt-4 text-2xl font-medium text-wood-800">
+          <p className="mt-4 text-2xl font-medium text-cream">
             {formatPrice(product.price)}
           </p>
           {product.short_description && (
-            <p className="mt-4 text-wood-700">{product.short_description}</p>
+            <p className="mt-4 text-foreground/90">{product.short_description}</p>
           )}
           {product.description && (
-            <div className="mt-6 prose prose-wood max-w-none text-wood-700">
+            <div className="mt-6 prose prose-invert max-w-none text-muted">
               {product.description}
             </div>
           )}
           {product.dimensions && (
-            <p className="mt-4 text-sm text-wood-600">
+            <p className="mt-4 text-sm text-muted">
               Medidas: {product.dimensions.width} x {product.dimensions.height} x{" "}
               {product.dimensions.depth} {product.dimensions.unit || "cm"}
             </p>
           )}
           {product.materials?.length ? (
-            <p className="mt-2 text-sm text-wood-600">
+            <p className="mt-2 text-sm text-muted">
               Materiales: {product.materials.join(", ")}
             </p>
           ) : null}
           {product.finishes?.length ? (
-            <p className="mt-1 text-sm text-wood-600">
+            <p className="mt-1 text-sm text-muted">
               Terminaciones: {product.finishes.join(", ")}
             </p>
           ) : null}
-          <div className="mt-3 space-y-1 text-sm text-wood-600">
+          <div className="mt-3 space-y-1 text-sm text-muted">
             <p>
               Estado:{" "}
               <span className="font-medium">
@@ -122,8 +122,8 @@ export default async function ProductPage({ params }: PageProps) {
       </div>
 
       {related.length > 0 && (
-        <section className="mt-16 border-t border-wood-200 pt-16">
-          <h2 className="font-serif text-2xl font-medium text-wood-900">
+        <section className="mt-16 border-t border-border pt-16">
+          <h2 className="font-serif text-2xl font-medium text-foreground">
             Productos relacionados
           </h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -131,11 +131,11 @@ export default async function ProductPage({ params }: PageProps) {
               <Link
                 key={p.id}
                 href={`/tienda/${p.slug}`}
-                className="group block overflow-hidden rounded-lg border border-wood-200 bg-white"
+                className="group block overflow-hidden rounded-lg border border-border bg-wood-900/50"
               >
-                <div className="relative aspect-[4/3] bg-wood-100">
+                <div className="relative aspect-[4/3] bg-wood-950">
                   <Image
-                    src={p.images?.[0]?.url ?? "https://placehold.co/600x450/f5f2ed/5b4332?text=Producto"}
+                    src={p.images?.[0]?.url ?? "https://placehold.co/600x450/2d2620/d2c9b1?text=Producto"}
                     alt={p.title}
                     fill
                     className="object-cover group-hover:scale-105 transition"
@@ -143,10 +143,10 @@ export default async function ProductPage({ params }: PageProps) {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-medium text-wood-900 group-hover:underline">
+                  <h3 className="font-medium text-foreground group-hover:text-cream">
                     {p.title}
                   </h3>
-                  <p className="text-wood-700">{formatPrice(p.price)}</p>
+                  <p className="text-cream">{formatPrice(p.price)}</p>
                 </div>
               </Link>
             ))}

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export const metadata = {
   title: "Nosotros",
   description:
-    "Locos por la Pinotea - Taller de carpintería y muebles a medida en Mar del Plata.",
+    "Galvi Carpintería - Muebles a medida en Pilar y Buenos Aires. Melamina MDF, enchapado, laqueado. Herrajes Häfele, Blum, Eurohard.",
 };
 
 export default function NosotrosPage() {
@@ -15,22 +15,22 @@ export default function NosotrosPage() {
         title="Nosotros"
         subtitle="Un taller con foco en la calidad y en el trato humano."
       />
-      <div className="mt-10 max-w-2xl space-y-8 text-wood-700">
-        <p className="text-lg">
-          Somos un taller de carpintería y fabricación de muebles a medida en Mar del
-          Plata. Trabajamos cocinas, placares, barras, muebles de baño, escritorios,
-          bibliotecas y todo lo que necesites para tu casa o negocio.
+      <div className="mt-10 max-w-2xl space-y-8 text-muted">
+        <p className="text-lg text-foreground/90">
+          Somos un taller de carpintería y fabricación de muebles a medida en Pilar.
+          Trabajamos por todo Buenos Aires: cocinas, placares, barras, muebles de
+          baño, escritorios y todo lo que necesites para tu casa o negocio.
         </p>
         <p>
-          Nuestro enfoque es simple: escuchar lo que necesitás, proponer una solución
-          a medida y entregar un trabajo bien hecho. No vendemos solo muebles; armamos
-          proyectos con medidas, materiales y terminaciones que se adaptan a tu
-          espacio y a tu gusto.
+          Utilizamos melamina MDF (no aglomerado), realizamos trabajos enchapados
+          y laqueados. Trabajamos solo a medida: no tenemos stock permanente;
+          cada proyecto se diseña según tu espacio, material y gama de herrajes
+          (baja, media o alta). Usamos marcas de primera como Häfele, Blum y Eurohard.
         </p>
         <p>
-          Atendemos en Mar del Plata y zona. Presupuestos sin compromiso, por
-          formulario o por WhatsApp. Si preferís, coordinamos una visita para medir y
-          definir el trabajo en persona.
+          Las cotizaciones son sin costo. Coordinamos una visita para medir,
+          replantear y armar el presupuesto juntos. Atendemos por WhatsApp,
+          email o formulario, con atención personalizada.
         </p>
         <p>
           Confianza, calidad y atención personalizada: eso es lo que nos define.

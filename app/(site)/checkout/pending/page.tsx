@@ -9,10 +9,10 @@ export const metadata = {
 export default function CheckoutPendingPage() {
   return (
     <div className="container mx-auto px-4 py-16 text-center">
-      <h1 className="font-serif text-3xl font-medium text-wood-900">
+      <h1 className="font-serif text-3xl font-medium text-foreground">
         Pago pendiente
       </h1>
-      <p className="mt-4 text-wood-700">
+      <p className="mt-4 text-muted">
         Recibimos tu pedido pero el pago aún no fue acreditado. Cuando se confirme,
         te contactamos para coordinar la entrega.
       </p>

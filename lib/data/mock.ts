@@ -92,6 +92,6 @@ export const MOCK_PROJECTS: Project[] = [
 ];
 
 /** Si no hay cuenta de servicio de Firebase, usamos datos mock en el servidor. */
-export function useMockData(): boolean {
+export function shouldUseMockData(): boolean {
   return !process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
 }

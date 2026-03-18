@@ -1,12 +1,12 @@
 import type { Project } from "@/lib/types/database";
-import { MOCK_PROJECTS, useMockData } from "./mock";
+import { MOCK_PROJECTS, shouldUseMockData } from "./mock";
 import {
   getProjectsFromFirestore,
   getProjectBySlugFromFirestore,
 } from "./firestore";
 
 export async function getFeaturedProjects(limit = 6): Promise<Project[]> {
-  if (useMockData()) return MOCK_PROJECTS.slice(0, limit);
+  if (shouldUseMockData()) return MOCK_PROJECTS.slice(0, limit);
   try {
     return await getProjectsFromFirestore({
       featuredOnly: true,
@@ -18,7 +18,7 @@ export async function getFeaturedProjects(limit = 6): Promise<Project[]> {
 }
 
 export async function getProjects(categorySlug?: string): Promise<Project[]> {
-  if (useMockData()) return MOCK_PROJECTS;
+  if (shouldUseMockData()) return MOCK_PROJECTS;
   try {
     return await getProjectsFromFirestore({
       categorySlug,
@@ -29,7 +29,7 @@ export async function getProjects(categorySlug?: string): Promise<Project[]> {
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
-  if (useMockData()) {
+  if (shouldUseMockData()) {
     return MOCK_PROJECTS.find((p) => p.slug === slug) || null;
   }
   try {

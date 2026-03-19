@@ -57,8 +57,10 @@ function getAdminApp(): any {
       console.error("Firebase service account JSON invalid:", e);
     }
   }
-  adminApp = initializeApp();
-  return adminApp;
+  // Sin credenciales (ej. build en Vercel sin env): no llamar a initializeApp()
+  // para evitar "Unable to detect a Project Id". Los datos se obtendrán en runtime
+  // o las funciones que usan Firestore deben capturar y devolver fallback.
+  throw new Error("Firebase not configured");
 }
 
 export function getAdminFirestore(): Firestore {

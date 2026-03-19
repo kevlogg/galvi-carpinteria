@@ -169,14 +169,19 @@ export async function getProjectBySlugFromFirestore(slug: string): Promise<Proje
 }
 
 export async function getCategoriesFromFirestore(): Promise<Category[]> {
-  const db = getAdminFirestore();
-  const snap = await db.collection("categories").where("active", "==", true).get();
-  return snap.docs.map((d) => ({
-    id: d.id,
-    name: d.data().name as string,
-    slug: d.data().slug as string,
-    active: d.data().active !== false,
-  }));
+  try {
+    const db = getAdminFirestore();
+    const snap = await db.collection("categories").where("active", "==", true).get();
+    return snap.docs.map((d) => ({
+      id: d.id,
+      name: d.data().name as string,
+      slug: d.data().slug as string,
+      active: d.data().active !== false,
+    }));
+  } catch {
+    // Build sin Firebase (ej. Vercel) o sin credenciales: devolver vacío para que el prerender no falle
+    return [];
+  }
 }
 
 /** Crea una orden (checkout). */

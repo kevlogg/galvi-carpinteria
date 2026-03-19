@@ -7,7 +7,7 @@ import { ProductCard } from "@/components/tienda/ProductCard";
 import { Button } from "@/components/ui/button";
 import { getCategoriesFromFirestore } from "@/lib/data/firestore";
 import { getProducts } from "@/lib/data/products";
-import { PLACEHOLDER_PRODUCT_IMAGE, TRABAJOS_REALIZADOS_IMAGENES } from "@/lib/constants";
+import { PLACEHOLDER_PRODUCT_IMAGE, TRABAJOS_REALIZADOS_IMAGENES, CATEGORIAS_EJEMPLO } from "@/lib/constants";
 
 /** Evita prerender en build: esta página usa Firebase y en Vercel no hay credenciales en build time. */
 export const dynamic = "force-dynamic";
@@ -18,7 +18,10 @@ export default async function HomePage() {
     // Mostrar todos los productos que están en tienda (sin filtrar por "featured").
     getProducts({ sort: "featured" }),
   ]);
-  const categories = categoriesFromDb.map((c) => ({ slug: c.slug, name: c.name }));
+  const categories =
+    categoriesFromDb.length > 0
+      ? categoriesFromDb.map((c) => ({ slug: c.slug, name: c.name, imageUrl: getCategoryImage(c.slug, c.name) }))
+      : CATEGORIAS_EJEMPLO.map((c) => ({ slug: c.slug, name: c.name, imageUrl: c.imageUrl }));
 
   // Imágenes por categoría para el bloque "Qué hacemos".
   // Importante: el fallback NO debe incluir texto para que no "muestre la palabra"
@@ -133,7 +136,7 @@ export default async function HomePage() {
                 key={cat.slug}
                 name={cat.name}
                 slug={cat.slug}
-                imageUrl={getCategoryImage(cat.slug, cat.name)}
+                imageUrl={cat.imageUrl}
               />
             ))}
           </div>

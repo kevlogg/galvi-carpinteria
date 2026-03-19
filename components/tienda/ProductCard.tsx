@@ -41,7 +41,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 33vw"
-          unoptimized={imageUrl.startsWith("http") ? false : undefined}
+          unoptimized={imageUrl.startsWith("/") || imageUrl.startsWith("http")}
         />
         {product.stock_type === "on_request" && (
           <span className="absolute left-2 top-2 rounded bg-black/80 px-2 py-0.5 text-xs text-cream">

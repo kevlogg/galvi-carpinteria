@@ -47,15 +47,15 @@ export const TRABAJOS_REALIZADOS_IMAGENES: { title: string; src: string }[] = [
 ];
 
 /**
- * Productos de ejemplo para la tienda cuando Firebase no está configurado (ej. deploy en Vercel sin env).
- * Colocar imágenes en public/imagenes/tienda-ejemplo/: 1.jpg, 2.jpg, 3.jpg, 4.jpg
+ * Productos de ejemplo para la tienda cuando Firebase no está configurado.
+ * Usamos URLs de Unsplash para que las imágenes carguen sin subir archivos.
  */
 function productoEjemplo(
   id: string,
   slug: string,
   title: string,
   price: number,
-  imagePath: string,
+  imageUrl: string,
   shortDescription: string
 ): Product {
   const now = new Date().toISOString();
@@ -78,9 +78,12 @@ function productoEjemplo(
     seo_description: null,
     created_at: now,
     updated_at: now,
-    images: [{ id: `${id}-img`, product_id: id, url: imagePath, sort_order: 0 }],
+    images: [{ id: `${id}-img`, product_id: id, url: imageUrl, sort_order: 0 }],
   };
 }
+
+const U = (id: string, w = 600) =>
+  `https://images.unsplash.com/photo-${id}?w=${w}&auto=format&fit=crop`;
 
 export const PRODUCTOS_EJEMPLO: Product[] = [
   productoEjemplo(
@@ -88,7 +91,7 @@ export const PRODUCTOS_EJEMPLO: Product[] = [
     "mesa-ratona",
     "Mesa ratona",
     180000,
-    "/imagenes/tienda-ejemplo/1.jpg",
+    U("1560440021-33f9b867899d"),
     "Mesa ratona de melamina. Diseño moderno, terminación mate."
   ),
   productoEjemplo(
@@ -96,7 +99,7 @@ export const PRODUCTOS_EJEMPLO: Product[] = [
     "silla-comedor",
     "Silla de comedor",
     45000,
-    "/imagenes/tienda-ejemplo/2.jpg",
+    U("1560440021-33f9b867899d"),
     "Silla con estructura sólida. Disponible en varios acabados."
   ),
   productoEjemplo(
@@ -104,7 +107,7 @@ export const PRODUCTOS_EJEMPLO: Product[] = [
     "escritorio-home-office",
     "Escritorio home office",
     165000,
-    "/imagenes/tienda-ejemplo/3.jpg",
+    U("1595428774223-ef52624120d2"),
     "Escritorio amplio con cajonera. Ideal para teletrabajo."
   ),
   productoEjemplo(
@@ -112,7 +115,17 @@ export const PRODUCTOS_EJEMPLO: Product[] = [
     "estanteria-modular",
     "Estantería modular",
     95000,
-    "/imagenes/tienda-ejemplo/4.jpg",
+    U("1594620302200-9a762244a156"),
     "Estantería de 5 cuerpos. Montaje sencillo."
   ),
+];
+
+/** Categorías de ejemplo para "Qué hacemos" cuando Firebase no devuelve categorías. */
+export const CATEGORIAS_EJEMPLO: { slug: string; name: string; imageUrl: string }[] = [
+  { slug: "cocinas", name: "Cocinas", imageUrl: U("1556911220-bff31c812dba") },
+  { slug: "placares", name: "Placares", imageUrl: U("1722153152286-d7c1ba92010f") },
+  { slug: "escritorios", name: "Escritorios", imageUrl: U("1595428774223-ef52624120d2") },
+  { slug: "barras", name: "Barras", imageUrl: U("1556909114-f6e7ad7d3136") },
+  { slug: "muebles-de-bano", name: "Muebles de baño", imageUrl: U("1600566753086-050adfa0f44f") },
+  { slug: "estantes", name: "Estantes", imageUrl: U("1594620302200-9a762244a156") },
 ];

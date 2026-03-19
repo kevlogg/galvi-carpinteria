@@ -9,6 +9,9 @@ import { getCategoriesFromFirestore } from "@/lib/data/firestore";
 import { getProducts } from "@/lib/data/products";
 import { PLACEHOLDER_PRODUCT_IMAGE, TRABAJOS_REALIZADOS_IMAGENES } from "@/lib/constants";
 
+/** Evita prerender en build: esta página usa Firebase y en Vercel no hay credenciales en build time. */
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const [categoriesFromDb, products] = await Promise.all([
     getCategoriesFromFirestore(),

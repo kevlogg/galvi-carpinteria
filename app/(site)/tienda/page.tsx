@@ -6,6 +6,9 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ProductCardSkeleton } from "@/components/ui/LoadingSkeleton";
 import { FiltersBar } from "@/components/tienda/FiltersBar";
 
+/** Evita prerender en build: esta página usa Firebase (categorías/productos). */
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Tienda",
   description: "Muebles con precio cerrado. Mesa, estanterías, escritorios y más.",

@@ -1,6 +1,9 @@
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 import { AuthGuard } from "@/components/admin/AuthGuard";
 
+/** Admin usa Firebase; no prerender en build (Vercel sin credenciales). */
+export const dynamic = "force-dynamic";
+
 export default function AdminDashboardLayout({
   children,
 }: { children: React.ReactNode }) {

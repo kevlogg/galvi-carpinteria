@@ -32,8 +32,8 @@ export function HeroSection({ trabajosPreviews }: { trabajosPreviews: TrabajoPre
           </div>
 
           {trabajosPreviews.length > 0 && (
-            <div className="flex items-stretch gap-0">
-              <aside className="flex-1 rounded-lg border border-border bg-wood-900/20 p-4">
+            <div className="flex w-full min-w-0 flex-col sm:flex-row sm:items-stretch sm:gap-0">
+              <aside className="min-w-0 flex-1 rounded-lg border border-border bg-wood-900/20 p-4 sm:min-w-[280px]">
                 <div className="flex items-baseline justify-between gap-4">
                   <h2 className="font-serif text-lg font-medium text-foreground">
                     Trabajos realizados
@@ -47,14 +47,14 @@ export function HeroSection({ trabajosPreviews }: { trabajosPreviews: TrabajoPre
                 </div>
 
                 <div
-                  className="mt-4 flex gap-4 overflow-x-auto pb-2 pr-1 snap-x snap-mandatory scrollbar-hide"
+                  className="mt-4 flex gap-3 overflow-x-auto pb-2 pr-1 snap-x snap-mandatory scrollbar-hide [-webkit-overflow-scrolling:touch]"
                   style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >
                   {trabajosPreviews.map((t, i) => (
                     <Link
                       key={i}
                       href="/trabajos"
-                      className="group block min-w-[240px] w-[240px] sm:min-w-[260px] sm:w-[260px] snap-start overflow-hidden rounded-lg border border-border bg-wood-900/20"
+                      className="group block min-w-[180px] w-[180px] shrink-0 snap-start overflow-hidden rounded-lg border border-border bg-wood-900/20 sm:min-w-[220px] sm:w-[220px] md:min-w-[240px] md:w-[240px]"
                       aria-label={`Ver trabajo: ${t.title}`}
                     >
                       <div className="relative aspect-[4/3]">
@@ -63,7 +63,7 @@ export function HeroSection({ trabajosPreviews }: { trabajosPreviews: TrabajoPre
                           alt={t.title}
                           fill
                           className="object-cover transition group-hover:scale-[1.03]"
-                          sizes="260px"
+                          sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, 240px"
                           unoptimized
                         />
                       </div>
@@ -72,7 +72,7 @@ export function HeroSection({ trabajosPreviews }: { trabajosPreviews: TrabajoPre
                 </div>
               </aside>
               <div
-                className="flex shrink-0 items-center justify-center px-2 text-cream/80"
+                className="hidden shrink-0 items-center justify-center px-2 text-cream/80 sm:flex"
                 aria-hidden
               >
                 <svg

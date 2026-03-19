@@ -34,7 +34,7 @@ export default async function HomePage() {
     muebles:
       "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&auto=format&fit=crop",
     "muebles-de-bano":
-      "https://images.unsplash.com/photo-1600566753086-050adfa0f44f?w=600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1552321554-5febb698a72f?w=600&auto=format&fit=crop",
     escritorios:
       "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&auto=format&fit=crop",
     estantes:
@@ -154,16 +154,16 @@ export default async function HomePage() {
               <Link href="/tienda">Ver todos</Link>
             </Button>
           </div>
-          <div className="mt-10 flex w-full items-stretch gap-0">
+          <div className="mt-10 flex w-full min-w-0 items-stretch gap-0">
             <div
-              className="min-w-0 flex-1 overflow-x-auto pb-2 scrollbar-hide"
+              className="min-w-0 flex-1 overflow-x-auto pb-2 scrollbar-hide [-webkit-overflow-scrolling:touch]"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               <div className="flex w-max gap-4 snap-x snap-mandatory">
                 {products.map((product) => (
                   <div
                     key={product.id}
-                    className="snap-start min-w-[260px] w-[260px] sm:min-w-[280px] sm:w-[280px]"
+                    className="snap-start min-w-[260px] w-[260px] shrink-0 sm:min-w-[280px] sm:w-[280px]"
                   >
                     <ProductCard product={product} />
                   </div>
@@ -171,7 +171,7 @@ export default async function HomePage() {
               </div>
             </div>
             <div
-              className="flex shrink-0 items-center justify-center px-3 text-cream/80"
+              className="hidden shrink-0 items-center justify-center px-3 text-cream/80 sm:flex"
               aria-hidden
             >
               <svg

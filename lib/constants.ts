@@ -126,6 +126,6 @@ export const CATEGORIAS_EJEMPLO: { slug: string; name: string; imageUrl: string 
   { slug: "placares", name: "Placares", imageUrl: U("1722153152286-d7c1ba92010f") },
   { slug: "escritorios", name: "Escritorios", imageUrl: U("1595428774223-ef52624120d2") },
   { slug: "barras", name: "Barras", imageUrl: U("1556909114-f6e7ad7d3136") },
-  { slug: "muebles-de-bano", name: "Muebles de baño", imageUrl: U("1600566753086-050adfa0f44f") },
+  { slug: "muebles-de-bano", name: "Muebles de baño", imageUrl: U("1552321554-5febb698a72f") },
   { slug: "estantes", name: "Estantes", imageUrl: U("1594620302200-9a762244a156") },
 ];
